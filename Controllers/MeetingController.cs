@@ -18,7 +18,7 @@ namespace MeetingManagment.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Meeting>>> GetAllMeeting()
         {
-            var meeting = await _component.Employees.ToListAsync();
+            var meeting = await _component.Meetings.ToListAsync();
             return Ok(meeting);
         }
         [HttpGet("{id}")]
@@ -32,7 +32,7 @@ namespace MeetingManagment.Controllers
         {
             _component.Meetings.Add(meet);
             await _component.SaveChangesAsync();
-            return CreatedAtAction("GetMeeting", new { id = meet.MeetingId }, meet);
+            return meet;
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMenu(int id, Meeting meet)
@@ -49,6 +49,7 @@ namespace MeetingManagment.Controllers
                 men.EndDate = meet.EndDate;
                 men.StartTime = meet.StartTime;
                 men.EndTime = meet.EndTime;
+                men.RoomId= meet.RoomId;
                 await _component.SaveChangesAsync();
                 return Ok(men);
             }
@@ -68,6 +69,12 @@ namespace MeetingManagment.Controllers
             }
             return NoContent();
         }
+        /*[HttpGet("{id}")]
+        public async Task<ActionResult<Meeting>> GetMeetingByEmpd(int id)
+        {
+            var select = await _component.Employees.FindAsync(id);
+            return Ok(select);
+        }*/
         private bool MeetingExists(int id)
         {
             return _component.Meetings.Any(mi => mi.MeetingId == id);

@@ -32,7 +32,7 @@ namespace MeetingManagment.Controllers
         {
             _component.Employees.Add(emp);
             await _component.SaveChangesAsync();
-            return CreatedAtAction("GetEmoloyee", new { id = emp.EmployeeId }, emp);
+            return emp;
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMenu(int id, Employee emp)
@@ -78,6 +78,35 @@ namespace MeetingManagment.Controllers
         private bool EmployeeExists(int id)
         {
             return _component.Employees.Any(mi => mi.EmployeeId == id);
+        }
+        [HttpGet("{email}/{password}")]
+        public async Task<IEnumerable<Employee>> Search(string email, string password)
+        {
+
+            IQueryable<Employee> query = _component.Employees;
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                query = query.Where(e => e.EmployeeEmail.Contains(email)
+                           && e.EmployeePassword.Contains(password));
+            }
+
+            return await query.ToListAsync();
+        }
+        [HttpGet("getuser")]
+        public async Task<IActionResult> GetUser(string useremail, string password)
+        {
+            var user = await _component.Employees.FirstOrDefaultAsync(u => u.EmployeeEmail == useremail);
+            if (user == null || !VerifyPasswordHash(user.EmployeePassword, password))
+            {
+                return NotFound("User not found or invalid username/password");
+            }
+            // You can return user information or any other data you need here
+            return Ok(user);
+        }
+        private bool VerifyPasswordHash(string storedHash, string password)
+        {
+            return storedHash == password;
         }
     }
 }

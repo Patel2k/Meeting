@@ -32,7 +32,7 @@ namespace MeetingManagment.Controllers
         {
             _component.Rooms.Add(meet);
             await _component.SaveChangesAsync();
-            return CreatedAtAction("GetMeeting", new { id = meet.RoomId }, meet);
+            return meet;
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMenu(int id, Room meet)

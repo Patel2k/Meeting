@@ -2,6 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
+using System.Security.Claims;
+using System.Text;
 
 namespace MeetingManagment.Controllers
 {
@@ -42,7 +48,7 @@ namespace MeetingManagment.Controllers
         {
             _component.Admins.Add(admin);
             await _component.SaveChangesAsync();
-            return CreatedAtAction("GetAdmin", new { id = admin.AdminId }, admin);
+            return admin;
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMenu(int id, Admin admin)
@@ -82,5 +88,39 @@ namespace MeetingManagment.Controllers
             return _component.Admins.Any(mi => mi.AdminId == id);
         }
 
+        [HttpGet("{email}/{password}")]
+        public async Task<IEnumerable<Admin>> Search(string email, string password)
+        {
+            IQueryable<Admin> query = _component.Admins;
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                query = query.Where(e => e.AdminEmail.Contains(email)
+                           && e.AdminPassword.Contains(password));
+                Console.WriteLine("Logged In");
+            }
+
+
+            return await query.ToListAsync();
+        }
+        [HttpGet("getuser")]
+        public async Task<IActionResult> GetUser(string useremail, string password)
+        {
+
+            var user = await _component.Admins.FirstOrDefaultAsync(u => u.AdminEmail == useremail);
+            if (user == null || !VerifyPasswordHash(user.AdminPassword, password))
+            {
+                return NotFound("User not found or invalid username/password");
+            }
+            // You can return user information or any other data you need here
+            return Ok("Validone");
+        }
+        private bool VerifyPasswordHash(string storedHash, string password)
+        {
+            return storedHash == password;
+        }
     }
 }
+
+
+       
