@@ -50,6 +50,7 @@ namespace MeetingManagment.Controllers
                 men.StartTime = meet.StartTime;
                 men.EndTime = meet.EndTime;
                 men.RoomId= meet.RoomId;
+                men.EmployeeId=meet.EmployeeId;
                 await _component.SaveChangesAsync();
                 return Ok(men);
             }

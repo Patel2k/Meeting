@@ -12,19 +12,17 @@ namespace MeetingManagment.Models
         [Required]
         public string  MeetingDetails { get; set; }=string.Empty;
         [Required]
-        [DataType(DataType.Date)] 
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; } = string.Empty;
+        
+        //[Required]
+        public string EndDate { get; set; }=string.Empty;
+        
+        public string StartTime { get; set; } = string.Empty;
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime EndDate { get; set; }
-        [Required]
-        [DataType(DataType.Time)]
-        public DateTime StartTime { get; set; }
-        [Required]
-        [DataType(DataType.Time)]
-        public DateTime EndTime { get; set; }
+        
+        public string EndTime { get; set; }= string.Empty;
         [ForeignKey(nameof(EmployeeId))]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
         [ForeignKey(nameof(RoomId))]
         public int? RoomId { get; set; }
        

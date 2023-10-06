@@ -119,8 +119,34 @@ namespace MeetingManagment.Controllers
         {
             return storedHash == password;
         }
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] Admin login)
+        {
+            // Replace with your authentication logic (e.g., database check)
+            if (IsValidUser(login.AdminEmail, login.AdminPassword))
+            {
+                return Ok(new { message = "Login successful" });
+            }
+
+            return Unauthorized(new { message = "Invalid credentials" });
+        }
+
+        private bool IsValidUser(string email, string password)
+        {
+            var user = _component.Admins.FirstOrDefault(u => u.AdminEmail == email);
+            if (user != null)
+            {
+                if (user.AdminPassword == password)
+                {
+                    return true;
+
+                }
+            }
+            return false;
+        }
     }
 }
 
 
-       
+
+
