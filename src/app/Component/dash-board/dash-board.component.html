@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+
+-<h3 style="text-align: center; padding-top: 10px;">Your Meetings</h3>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col">Meeting Number</th>
+                        <th scope="col">Meeting Details</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let meeting of Meetinglist">
+                        <td scope="row">{{meeting.meetingId -1}}</td>
+                        <td>{{meeting.meetingDetails}}</td>
+                        <td><a routerLink="/edit/{{meeting.meetingId}}" class="btn btn-primary my-2">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>&nbsp;
+                            <button class="btn btn-danger my-2" (click)="onDelete(meeting.meetingId)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>&nbsp;
+                            <a routerLink="/view/{{meeting.meetingId}}" class="btn btn-secondary my-2">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

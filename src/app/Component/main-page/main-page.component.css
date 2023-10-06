@@ -1,0 +1,160 @@
+.body {
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+.aboutimage{
+    display: flex;
+    flex-direction: column;
+    margin-left: 200%;
+}
+.contactmap{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50%;
+}
+.about_section .row {
+        flex-direction: column-reverse;
+    }
+.image_2 {
+    height: 500%;
+    width: 200%;
+    flex-direction: row;
+    margin-left: 100%;
+}
+/* FOR CIRCLE IN HOME PAGE*/
+.about_section::after {
+
+    content: '';
+
+    position: absolute;
+
+    height: 466px;
+
+    width: 655px;
+
+    margin: 0 auto;
+
+    justify-content: center;
+
+    left: 0px;
+
+    right: initial;
+
+    display: block;
+
+    background-image: url(../../../assets/images/about-bg.png);
+
+    top: 37px;
+
+    z-index: -1;
+
+    background-size: 100%;
+
+}
+
+/*FOR ABOUT HEADING*/
+
+.about_taital {
+
+    width: 100%;
+
+    float: left;
+
+    font-size: 40px;
+
+    color: #383838;
+
+}
+
+ 
+
+.about_text {
+
+    width: 100%;
+
+    float: left;
+
+    font-size: 16px;
+
+    color: #0c0900;
+
+    margin-left: 0px;
+
+}
+
+ 
+
+.us_text {
+
+    background-color: #ececeb;
+
+    border-radius: 100%;
+
+    color: #5114b2;
+
+    padding: 5px 10px;
+
+}
+
+ 
+
+.btn-primary a{
+
+    color: white!important;
+
+    text-decoration: none;
+
+}
+
+ 
+
+.header_section {
+
+    width: 100%;
+
+    float: left;
+
+    background-image: url(../../../assets/images/banner-bg.png);
+
+    height: auto;
+
+    background-size: cover;
+
+    padding-bottom: 90px;
+
+}
+
+.banner_taital {
+
+    width: 80%;
+
+    float: left;
+
+    font-size: 60px;
+
+    color: black;
+
+    font-weight: bold;
+
+    line-height: 100px;
+
+    padding-top: 60px;
+
+}
+
+.footer {
+
+    position: fixed;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    background-color: red;
+
+    color: white;
+
+    text-align: center;
+
+    }

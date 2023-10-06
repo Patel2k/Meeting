@@ -1,0 +1,21 @@
+<!-- {{selectedMeeting | json}} -->
+<div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <input text="text" class="form-control my-4" disabled [value]="selectedMeeting.meetingId" disabled/>
+                <input text="text" class="form-control my-4" disabled [value]="selectedMeeting.meetingDetails" />
+                <input text="text" class="form-control my-4" disabled [value]="selectedMeeting.startDate" />
+                <input text="number" class="form-control my-4" disabled [value]="selectedMeeting.endDate" />
+                <!-- <input text="number" class="form-control my-4" disabled [value]="selectedMeeting.startTime" />
+                <input text="number" class="form-control my-4" disabled [value]="selectedMeeting.endTime" /> -->
+                <input text="number" class="form-control my-4" disabled [value]="selectedMeeting.employeeId" />
+                <input text="number" class="form-control my-4" disabled [value]="selectedMeeting.roomId" />
+            </div>
+
+        </div>
+    </div>
+</div>

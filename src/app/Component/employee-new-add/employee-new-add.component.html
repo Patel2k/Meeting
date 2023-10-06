@@ -1,0 +1,90 @@
+<form class="vh-120" style="background-color: #2779e2;" [formGroup]="admform">
+    <div class="container h-50">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-7">
+                <h1 class="text-white mb-4">New Employee</h1>
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body">
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Full name</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input type="text" class="form-control form-control-lg" name="employeeName" formControlName="employeeName"
+                                    [(ngModel)]="newEmployee.employeeName" />
+                            </div>
+                        </div>
+                        <hr class="mx-n3">
+                        <label for="adminEmail"></label>
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Admin Email address</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input type="email" name="employeeEmail" class="form-control form-control-lg"
+                                    placeholder="example@example.com" [(ngModel)]="newEmployee.employeeEmail" formControlName="employeeEmail"/>
+                                <p *ngIf="employeeEmail?.touched">
+                                    <span class="err" *ngIf="employeeEmail?.errors?.['required']" style="color: red;">
+                                        Email is required
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="mx-n3">
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Admin Password</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input type="password" class="form-control form-control-lg" name="adminPassword"
+                                    placeholder="example@example.com" [(ngModel)]="newEmployee.employeePassword" formControlName="employeePassword" />
+                                <p *ngIf="employeePassword?.touched">
+                                    <span class="err" *ngIf="employeePassword?.errors?.['required']" style="color: red;">
+                                        Password is required
+                                    </span>
+                                </p>    
+                            </div>
+                        </div>
+                        <hr class="mx-n3">
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Confirm Password</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input type="password" class="form-control form-control-lg"
+                                    placeholder="example@example.com" />
+                            </div>
+                        </div>
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Phone Number</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input type="text" class="form-control form-control-lg" name="adminPhone"
+                                    placeholder="Phoneno.com" [(ngModel)]="newEmployee.employeePhone" />
+                            </div>
+                            <p *ngIf="employeePassword?.touched">
+                                <span class="err" *ngIf="employeePhone?.errors?.['required']" style="color: red;">
+                                    PhoneNumber is required
+                                </span>
+                            </p>
+                        </div>
+                        <div class="px-5 py-4">
+                            <button type="submit" class="btn btn-primary btn-lg" (click)="onNewEmployee()">Send
+                                application</button>
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary" routerLink="/">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

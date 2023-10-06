@@ -1,0 +1,21 @@
+<!-- <p>edit-emp works!</p> -->
+<div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <input text="text" class="form-control my-4" [value]="updateMeeting.meetingId" />
+                <input text="text" class="form-control my-4" [(ngModel)]="updateMeeting.meetingDetails" />
+                <input text="text" class="form-control my-4" [(ngModel)]="updateMeeting.startDate" />
+                <input text="number" class="form-control my-4" [(ngModel)]="updateMeeting.endDate" />
+                <input text="number" class="form-control my-4" [(ngModel)]="updateMeeting.startTime" />
+                <input text="number" class="form-control my-4" [(ngModel)]="updateMeeting.endTime" />
+                <input text="number" class="form-control my-4" [(ngModel)]="updateMeeting.employeeId" />
+                <input text="number" class="form-control my-4" [(ngModel)]="updateMeeting.roomId" />
+                <button (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
